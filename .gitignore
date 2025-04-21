@@ -1,5 +1,8 @@
 # Created by venv; see https://docs.python.org/3/library/venv.html
 
-__pychache__
-fastapi-env
+__pycache__/
+*.py[cod]
+fastapi-env/
+tutorial-env/
+*.db
 .DS_Store
