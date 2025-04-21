@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 #declare mapping
 
 
-from sqlalchemy.orm import sessionmaker 
+from sqlalchemy.orm import sessionmaker
 #actually start talking to the database that lets you open database sessions to run queries and commit changes. 
 
 import sqlalchemy
@@ -28,3 +28,9 @@ autoflush=False: Prevents automatic updates to the database before queries — y
 
 Base = sqlalchemy.orm.declarative_base()   #It creates a base class that your SQLAlchemy models (tables) will inherit from.
 
+def get_db():
+    db = SessionLocal()  #creates a new database session
+    try:
+        yield db   #give it to whoever called this function
+    finally:
+        db.close()  #Make sure it's closed afterward (whether or not there's an error)
